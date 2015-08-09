@@ -90,7 +90,7 @@ class SolrDataProvider extends BaseDataProvider
 				$this->query->addSort($k, $order === SORT_ASC ? $query::SORT_ASC : $query::SORT_DESC);
 			}
 		}
-		$resultset = $this->solr->select($this->query);
+		$resultset = $this->solr->select($this->query,SolrHelper::getCore());
 		$models = [];
 		foreach($resultset as $result){
 			$cname = $this->modelClass;
@@ -104,7 +104,7 @@ class SolrDataProvider extends BaseDataProvider
 		$keys = [];
 		if ($this->key !== null) {
 			foreach ($models as $model) {
-				if (is_string($this->key)) {
+				if (is_string($this->key)) {s
 					$keys[] = $model[$this->key];
 				} else {
 					$keys[] = call_user_func($this->key, $model);
@@ -148,7 +148,7 @@ class SolrDataProvider extends BaseDataProvider
 			throw new InvalidConfigException('The "query" property must be an instance of a Solarium Query.');
 		}
 		$query = clone $this->query;
-		$resultset = $this->solr->select($query);
+		$resultset = $this->solr->select($query,SolrHelper::getCore());
 		
 		return (int) $resultset->getNumFound();
 	}
