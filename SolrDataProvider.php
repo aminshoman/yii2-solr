@@ -9,6 +9,7 @@ use yii\data\BaseDataProvider;
 use yii\di\Instance;
 use Solarium\Core\Query\Query as SolrQuery;
 use sammaye\solr\Client;
+use common\modules\search\components\SolrHelper;
 
 /**
  * This is the SolrDataProvider
