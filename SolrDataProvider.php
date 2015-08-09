@@ -104,7 +104,7 @@ class SolrDataProvider extends BaseDataProvider
 		$keys = [];
 		if ($this->key !== null) {
 			foreach ($models as $model) {
-				if (is_string($this->key)) {s
+				if (is_string($this->key)) {
 					$keys[] = $model[$this->key];
 				} else {
 					$keys[] = call_user_func($this->key, $model);
